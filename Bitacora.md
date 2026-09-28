@@ -132,3 +132,26 @@ la clase 3). Reinicié el kernel, volví a correr la celda de imports y funcion�
 
 **Cómo verifiqué:** corrí el notebook, ingresé "economista" por teclado y comprobé que
 salen las 6 columnas esperadas y que ninguna de las tres excluidas aparece.
+
+### Modificación 2: tipo de MAS_500 a bool
+Me pidieron cambiar el tipo declarado de MAS_500 a bool y justificar el impacto.
+
+**Qué toqué:** una sola línea de `COLUMNAS` en `src/config.py`.
+
+**Impacto funcional: ninguno.** Fui a buscar dónde se usa "tipo" y aparece solo en dos
+lugares: el `map` de `generar_informe`, que lo copia a la fila, y el `print` de
+`imprimir_informe`. El filtro usa "completitud" y el orden usa nombre o completitud.
+Nunca se usa el tipo para decidir nada, así que no se rompe nada. Lo verifiqué corriendo
+el informe sin rol y el del docente, que es el único que incluye MAS_500.
+
+**Lo único visible:** en la tabla ahora dice "bool" en vez de "str", y sigue alineada
+porque el ancho del campo es 5 y "bool" ocupa 4.
+
+**Impacto semántico:** los valores reales de MAS_500 son "N" y "S", que son strings.
+Declarar bool hace que el tipo declarado no coincida con los datos. Hoy no molesta
+porque el tipo es solo descriptivo, pero si en algún momento se usara para validar o
+convertir, ese rol fallaría. Para que fuera coherente habría que pasar los valores a
+True/False.
+
+**Lo que aprendí:** que el cambio no rompa nada me confirmó que el campo "tipo" hoy es
+documentación, no algo que el programa controle.

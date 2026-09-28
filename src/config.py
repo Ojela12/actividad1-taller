@@ -14,7 +14,7 @@ COLUMNAS = {
     "ANO4":       {"tipo": "int", "completitud": 100},
     "TRIMESTRE":  {"tipo": "int", "completitud": 100},
     "ITF":        {"tipo": "int", "completitud": 84.7},
-    "MAS_500":    {"tipo": "str", "completitud": 100},
+    "MAS_500":    {"tipo": "bool", "completitud": 100},
     "GDECCFR":    {"tipo": "int", "completitud": 84.7},
 }
 
