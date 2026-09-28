@@ -35,6 +35,12 @@ ROLES = {
         "criterio": "completitud",
         "orden": "A",
     },
+    "economista": {
+        "columnas": ["PONDERA", "ESTADO", "CAT_OCUP", "REGION", "AGLOMERADO","ANO4", "TRIMESTRE", "ITF", "GDECCFR"],
+        "criterio": "nombre",
+        "orden": "A",
+        "minimo": 90,
+    },
 }
 
 CRITERIOS_VALIDOS = ("nombre", "completitud")

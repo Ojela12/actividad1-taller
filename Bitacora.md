@@ -106,3 +106,29 @@ Agregaría en `config.py` una constante, por ejemplo `ROL_DEFECTO = "docente"`, 
 - Sí, con casi todo lo de colecciones: diccionarios anidados (como el ejemplo de `music` de la clase 4), listas y `sorted()`.
 - Con funciones: parámetros con valores por defecto, docstrings y retorno de varios valores. `validar_config` devuelve una tupla `(criterio, orden, minimo)` y la desempaqueto en tres variables, igual que el ejemplo `summarize_text` de la clase.
 - Con el ejemplo de la clase de ordenar `dic_movies` por duración con `key=lambda elem: elem[1]`: es exactamente lo mismo que hago para ordenar las columnas por completitud.
+
+
+---
+
+## Continuación – 28/09/2026 (modificaciones)
+
+### Modificación 1: rol "economista"
+Me pidieron agregar un rol economista con 9 columnas de interés, umbral mínimo de
+completitud del 90 %, orden por nombre ascendente, y que al menos una columna quedara
+excluida por no alcanzar el umbral.
+
+**Qué toqué:** solo el diccionario `ROLES` en `src/config.py`. No cambié ninguna
+función. Eso es justamente lo que buscaba al separar datos de lógica: agregar un rol
+es agregar datos. En el notebook actualicé el texto del `input()` y la celda de
+instrucciones para que aparezca "economista" entre los roles disponibles.
+
+**Resultado:** el umbral de 90 deja afuera 3 de las 9 columnas pedidas: CAT_OCUP
+(58.3 %), ITF y GDECCFR (84.7 %). El informe muestra 6, de AGLOMERADO a TRIMESTRE.
+
+**Problema que encontré:** la primera vez que lo probé me dijo que el rol no existía,
+aunque ya estaba escrito en `config.py`. Es porque Python importa un módulo una sola
+vez por sesión y el kernel del notebook tenía la versión vieja en memoria (lo vimos en
+la clase 3). Reinicié el kernel, volví a correr la celda de imports y funcionó.
+
+**Cómo verifiqué:** corrí el notebook, ingresé "economista" por teclado y comprobé que
+salen las 6 columnas esperadas y que ninguna de las tres excluidas aparece.
